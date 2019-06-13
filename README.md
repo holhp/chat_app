@@ -19,13 +19,14 @@ Client side: Javascript with libraries: socketio, mustache (template makeup), ve
 
 1.Run composer update
 
-2. Export data in
+2. Export data in <br>
 ```database/chat_app.sql```
 
-3. Start php web server
+3. Start php web server <br>
 ```php -S localhost:3000 -t public```
 
-4. Start Websocket server
+4. Start Websocket server <br>
+
 ```php socket_server.php start``` for debug mode
 
 ```php socket_server.php start -d ``` for daemon mode
@@ -34,11 +35,11 @@ Client side: Javascript with libraries: socketio, mustache (template makeup), ve
 
 ```php socket_server.php status``` Status
 
-5. Open your browser and access
+5. Open your browser and access <br>
 
 ```localhost:3000```
 
-6. Signup or login with default accounts
+6. Signup or login with default accounts <br>
 - user1@example.com/123456
 - user2@example.com/123456
 - user3@example.com/123456
