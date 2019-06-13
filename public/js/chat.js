@@ -340,22 +340,6 @@ function setActiveDmBox(boxId) {
     document.getElementById(boxId).getElementsByTagName("input")[0].focus();
 }
 
-welcome();
-
-socket.on('connect', function() {
-    console.log('Connected to server');
-});
-
-socket.on('login_success', joinRoom);
-socket.on('newMessage', renderMessage);
-socket.on('welcome', renderMessage);
-socket.on('updateUserList', updateUserList);
-socket.on('newLocationUrl', renderMessage);
-socket.on('newDM', renderDmMessage);
-
-socket.on('disconnect', function() {
-    console.log('Disconnected from server');
-})
 
 function renderDmMessage(response) {
     var fromUserId = response.fromUserId;
@@ -396,3 +380,20 @@ function openDmBoxFromUserId(userId) {
 
     return document.getElementById(boxId);
 }
+
+welcome();
+
+socket.on('connect', function() {
+    console.log('Connected to server');
+});
+
+socket.on('login_success', joinRoom);
+socket.on('newMessage', renderMessage);
+socket.on('welcome', renderMessage);
+socket.on('updateUserList', updateUserList);
+socket.on('newLocationUrl', renderMessage);
+socket.on('newDM', renderDmMessage);
+
+socket.on('disconnect', function() {
+    console.log('Disconnected from server');
+})

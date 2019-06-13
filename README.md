@@ -4,6 +4,13 @@ A server side alternative implementation of [socket.io](https://github.com/socke
 <br>
 Client side: Javascript with libraries: socketio, mustache (template makeup), vex (dialog)
 
+## Feature list
+
+- Signin
+- Signup
+- Remember when logged in
+- Public chat, private chat
+
 ## Requiments
 
 1. PHP > 7.0, MySQL > 4
