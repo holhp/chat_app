@@ -15,16 +15,16 @@ Client side: Javascript with libraries: socketio, mustache (template makeup), ve
 
 1. PHP > 7.0, MySQL > 4
 
-2. Check your these two ports and close them if thery are being used
-3000 & 2020
+2. Check your these two ports ```3000 & 2020``` and close them if they are being used
 
-3. Please check out this link to know that your browser supports websocket or not
+
+3. Check out this link to know that your browser supports websocket or not
 
 ``https://crossbar.io/docs/Browser-Support/``
 
 ## Step to run
 
-1.Run composer update
+1. Run composer update <br>
 
 2. Export data in <br>
 ```database/chat_app.sql```
@@ -52,6 +52,6 @@ Client side: Javascript with libraries: socketio, mustache (template makeup), ve
 - user3@example.com/123456
 
 # Deliverables:
-- Time spent: 10 hours
+- Time spent: 15 hours
 - Testcase: added
-- Live testing url: will fix soon
+- Live testing url: will upload soon
