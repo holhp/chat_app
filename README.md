@@ -47,5 +47,4 @@ Client side: Javascript with libraries: socketio, mustache (template makeup), ve
 # Deliverables:
 - Time spent: 10 hours
 - Testcase: added
-
-
+- Live testing url: will fix soon
