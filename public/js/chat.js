@@ -3,9 +3,50 @@ vex.defaultOptions.className = 'vex-theme-default';
 vex.defaultOptions.hasCallback = true;
 vex.defaultOptions.escapeButtonCloses = true;
 vex.defaultOptions.overlayClosesOnClick = true;
-
 var signUpForm = signInForm = {};
 
+
+
+
+function welcome() {
+    return isLoggedIn() ? login() : signOptions()
+}
+
+function isLoggedIn() {
+    return getUserStorage() != null
+}
+
+/**
+ * Display 2 buttons: SignIn & SignUp
+ */
+function signOptions() {
+    vex.dialog.open({
+        message: 'Welcome',
+        escapeButtonCloses: false,
+        overlayClosesOnClick: false,
+        buttons: [
+            Object.assign({}, vex.dialog.buttons.YES, {
+                text: 'Sign Up',
+                className: 'inline-btn',
+                click: function() {
+                    signUp()
+                }
+            }),
+            Object.assign({}, vex.dialog.buttons.YES, {
+                text: 'Sign In',
+                className: 'inline-btn',
+                click: function() {
+                    signIn()
+                }
+            })
+        ]
+    });
+}
+
+
+/**
+ * Signin Form
+ */
 function signIn() {
     var template = document.getElementById('sign-in-form').innerHTML;
     var message = Mustache.render(template, signInForm);
@@ -32,12 +73,17 @@ function signIn() {
     });
 }
 
+/**
+ * Get response and return to Signin form if there are errors
+ */
 function signInResponse(data) {
     if (data.error)
         return appMessage(data.error, signIn);
-
 }
 
+/**
+ * SignUp form
+ */
 function signUp() {
     var template = document.getElementById('sign-up-form').innerHTML;
     var message = Mustache.render(template, signUpForm);
@@ -66,52 +112,32 @@ function signUp() {
     });
 }
 
+/**
+ * Get response and return to Signin form if there are errors
+ */
 function signUpResponse(data) {
     if (data.error)
         return appMessage(data.error, signUp);
 }
 
+/**
+ * Set user data in localStorage
+ */
 function setUserStorage(userData) {
     localStorage.setItem('user', JSON.stringify(userData))
 }
-
+/**
+ * Get user data in localStorage
+ */
 function getUserStorage() {
     var user = localStorage.getItem('user');
     return JSON.parse(user)
 }
 
-function isLoggedIn() {
-    return getUserStorage() != null
-}
 
-function signOptions() {
-    vex.dialog.open({
-        message: 'Welcome',
-        escapeButtonCloses: false,
-        overlayClosesOnClick: false,
-        buttons: [
-            Object.assign({}, vex.dialog.buttons.YES, {
-                text: 'Sign Up',
-                className: 'inline-btn',
-                click: function() {
-                    signUp()
-                }
-            }),
-            Object.assign({}, vex.dialog.buttons.YES, {
-                text: 'Sign In',
-                className: 'inline-btn',
-                click: function() {
-                    signIn()
-                }
-            })
-        ]
-    });
-}
-
-function welcome() {
-    return isLoggedIn() ? login() : signOptions()
-}
-
+/**
+ * Display error
+ */
 function appMessage(message, callback) {
     var opts = {
         message: message,
@@ -124,6 +150,7 @@ function appMessage(message, callback) {
 
     vex.dialog.open(opts);
 }
+
 
 function joinRoom(response) {
     var user = JSON.parse(response.text);
